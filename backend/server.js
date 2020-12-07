@@ -22,6 +22,12 @@ connection.once("open", () => {
   console.log("Mngoose database connection established successfully");
 });
 
+const dreamsRoute = require("./routes/dreams");
+const dreamersRoute = require("./routes/users");
+
+app.use("./dreams", dreamsRoute);
+app.use("./dreamers", dreamersRoute);
+
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
