@@ -6,7 +6,7 @@ export default function Footer() {
       <footer className="footer">
         <div>
           <a href="https://github.com/xeroxzen">Andile Jaden Mbele</a>
-          <span>&copy; {new Date().getUTCFullYear()} EffectivaX</span>
+          <span> &copy; {new Date().getUTCFullYear()} EffectivaX</span>
         </div>
       </footer>
     </div>

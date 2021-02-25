@@ -20,8 +20,8 @@ export default function Navbar() {
             </Link>
           </li>
           <li className="navbar-item">
-            <Link to="/user" className="nav-link">
-              Create Dreamer
+            <Link to="/add-dreamer" className="nav-link">
+              Add Dreamer
             </Link>
           </li>
         </ul>
