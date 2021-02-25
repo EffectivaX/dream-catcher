@@ -19,14 +19,14 @@ mongoose.connect(uri, {
 
 const connection = mongoose.connection;
 connection.once("open", () => {
-  console.log("Mngoose database connection established successfully");
+  console.log("Mongoose database connection established successfully");
 });
 
-const dreamsRoute = require("./routes/dreams");
-const dreamersRoute = require("./routes/users");
+const dreamsRouter = require("./routes/dreams");
+const dreamersRouter = require("./routes/dreamers");
 
-app.use("./dreams", dreamsRoute);
-app.use("./dreamers", dreamersRoute);
+app.use("./dreams", dreamsRouter);
+app.use("./dreamers", dreamersRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

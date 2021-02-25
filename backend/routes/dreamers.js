@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { default: userEvent } = require("@testing-library/user-event");
+// const { default: userEvent } = require("@testing-library/user-event");
 let Dreamer = require("../models/dreamer.model");
 
 router.route("/").get((req, res) => {
@@ -10,7 +10,10 @@ router.route("/").get((req, res) => {
 
 router.route("/add").post((req, res) => {
   const username = req.body.username;
-  const newDreamer = new Dreamer({ username });
+
+  const newDreamer = new Dreamer({
+    username,
+  });
 
   newDreamer
     .save()
