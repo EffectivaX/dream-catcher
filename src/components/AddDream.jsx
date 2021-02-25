@@ -1,10 +1,9 @@
-import React from "react";
+import React, {Component} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
-import { render } from "@testing-library/react";
 
-export default class AddDream extends React.Component() {
+export default class AddDream extends Component {
   constructor(props) {
     super(props);
 
