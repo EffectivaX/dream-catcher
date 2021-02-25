@@ -5,7 +5,7 @@ import axios from "axios";
 import { render } from "@testing-library/react";
 
 export default class AddDream extends React.Component() {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
@@ -22,10 +22,10 @@ export default class AddDream extends React.Component() {
 
       dreamers: [],
     };
-  };
+  }
 
   // eslint-disable-next-line no-undef
-  componentDidMount(){
+  componentDidMount() {
     axios.get("http://localhost:5000/users/").then((response) => {
       if (response.data.length > 0) {
         this.setState({
@@ -36,7 +36,7 @@ export default class AddDream extends React.Component() {
     });
   }
 
-  onChangeUsername(e){
+  onChangeUsername = (e) => {
     this.setState({
       username: e.target.value,
     });
@@ -78,70 +78,69 @@ export default class AddDream extends React.Component() {
       .then((res) => console.log(res.data));
 
     window.location = "/";
-  }
+  };
 
-    render() {
-      return (
-        <div>
-          <h3>Add New Dream</h3>
-          <form onSubmit={this.onSubmit}>
-            <div className="form-group">
-              <label>Username: </label>
-              <select
-                ref="userInput"
-                required
-                className="form-control"
-                value={this.state.username}
-                onChange={this.onChangeUsername}
-              >
-                {this.state.dreamers.map(function (dreamer) {
-                  return (
-                    <option key={dreamer} value={dreamer}>
-                      {dreamer}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
-            <div className="form-group">
-              <label>Description</label>
-              <input
-                type="text"
-                required
-                className="form-control"
-                value={this.state.description}
-                onChange={this.onChangeDescription}
+  render() {
+    return (
+      <div>
+        <h3>Add New Dream</h3>
+        <form onSubmit={this.onSubmit}>
+          <div className="form-group">
+            <label>Username: </label>
+            <select
+              ref="userInput"
+              required
+              className="form-control"
+              value={this.state.username}
+              onChange={this.onChangeUsername}
+            >
+              {this.state.dreamers.map(function (dreamer) {
+                return (
+                  <option key={dreamer} value={dreamer}>
+                    {dreamer}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div className="form-group">
+            <label>Description</label>
+            <input
+              type="text"
+              required
+              className="form-control"
+              value={this.state.description}
+              onChange={this.onChangeDescription}
+            />
+          </div>
+          <div className="form-group">
+            <label>Theme </label>
+            <input
+              type="text"
+              required
+              className="form-control"
+              value={this.state.theme}
+              onChange={this.onChangeTheme}
+            />
+          </div>
+          <div className="form-group">
+            <label>Date: </label>
+            <div>
+              <DatePicker
+                selected={this.state.date}
+                onChange={this.onChangeDate}
               />
             </div>
-            <div className="form-group">
-              <label>Theme </label>
-              <input
-                type="text"
-                required
-                className="form-control"
-                value={this.state.theme}
-                onChange={this.onChangeTheme}
-              />
-            </div>
-            <div className="form-group">
-              <label>Date: </label>
-              <div>
-                <DatePicker
-                  selected={this.state.date}
-                  onChange={this.onChangeDate}
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <input
-                type="submit"
-                value="Add Dream Log"
-                className="btn btn-primary"
-              />
-            </div>
-          </form>
-        </div>
-      );
+          </div>
+          <div className="form-group">
+            <input
+              type="submit"
+              value="Add Dream Log"
+              className="btn btn-primary"
+            />
+          </div>
+        </form>
+      </div>
+    );
   }
-  
 }
